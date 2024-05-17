@@ -1,0 +1,19 @@
+OpenSSL 3.0
+
+This folder contains a copy of OpenSSL 3.0.13 LTS in object code
+form (c.f. libssl-3-x64.dll and libcrypto-3-x64.dll).
+
+The terms of the Oracle license do NOT apply to OpenSSL 3.0.
+OpenSSL 3.0 is licensed under the Apache 2.0 license, separate from
+the Oracle product. A copy of the Apache 2.0 license is included in
+the 'Standard Licenses' section of the LICENSE file in the parent
+directory. Alternatively, you may obtain a copy in the file LICENSE
+in the OpenSSL source distribution or at https://www.openssl.org/source/license.html.
+
+If you do not wish to install these libraries, you may remove them,
+but the Oracle library might not operate properly or at all without
+them.
+
+The OpenSSL 3.0.13 LTS libraries contained herein are distributed by
+FireDaemon Technologies Limited and were downloaded from the
+FireDaemon Technologies Knowledge Base: https://kb.firedaemon.com/support/solutions/articles/4000121705.
