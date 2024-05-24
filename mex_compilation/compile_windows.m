@@ -1,5 +1,9 @@
 function compile_windows()
 % Build script for MyM (32-bit and 64-bit Windows)
+%
+% Note: the last 32-bit release of Matlab on Windows was R2015b
+
+assert(strncmp(computer('arch'),'win',3),'Platform does not appear to be Windows.');
 
 mym_base = fileparts(fileparts(mfilename('fullpath')));
 mym_src = fullfile(mym_base, 'src');
@@ -8,7 +12,7 @@ distrib_out = fullfile(mym_base, 'distribution', mexext());
 
 % Set up input and output directories
 mysql_base = fullfile(mym_base, 'mysqlclient'); 
-if endsWith(mexext(),'w32')
+if strfind(mexext(),'w32') %#ok<STRIFCND>
     % 32-bit... use mysql connector from MySQL 6.1.1
     mysql_base = fullfile(mym_base, 'mysql-connector');
 end
