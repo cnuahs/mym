@@ -1,0 +1,2 @@
+The MySQL client library is version 8.4.0 LTS, downloaded from the 
+MySQL developer zone: https://dev.mysql.com/downloads/mysql/

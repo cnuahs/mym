@@ -1,0 +1,43 @@
+function tbx = mktbx(varargin)
+  % package as toolbox for distribution (and optionally install)
+
+  install = false;
+  if nargin > 0
+    install = varargin{1};
+  end
+
+  root = fileparts(mfilename('fullpath'));
+
+  wd = pwd;
+  cd(fullfile('distribution',mexext()));
+  docs = help('mym');
+  cd(wd);
+
+  % exclude = {'.vscode', '.git', '.gitignore', 'build', 'lib', 'maria-plugin', ...
+  %            'mex_compilation', 'mysql-connector', 'notebook', 'src', 'zlib', ...
+  %            '*.txt', '*.env', '*.prf', '*.md', '*.yml', 'tests', '.github'};
+  d = dir(pwd);
+  exclude = {d(~endsWith({d.name},'distribution')).name};
+
+  d = dir('distribution');
+  % include = {d(~startsWith({d.name},".")).name};
+  include = fullfile('distribution',{d(~startsWith({d.name},".")).name});
+
+  ghtb.package('mym', ...
+               'Raphael Guzman', ...
+               'raphael.h.guzman@gmail.com', ...
+               'MySQL API for MATLAB with support for BLOB objects', ...
+               docs, ...
+               exclude, ...
+               @() strjoin(cellfun(@(x) num2str(x), ...
+                                   struct2cell(mym('version')),'UniformOutput',false), ...
+                           '.'), ...
+               include, ...
+               'toolboxVersionDir', fullfile('distribution',mexext()), ...
+               'toolboxRootDir', pwd);
+
+  tbx = [];
+  if install
+    tbx = matlab.addons.toolbox.installToolbox('mym.mltbx');
+  end
+end
