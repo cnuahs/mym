@@ -22,7 +22,7 @@ jobs:
           # - matlab_version: "R2016b"
           #   mysql_version: "5.7"
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Run primary tests
         env:
           MATLAB_UID: "1001"
@@ -35,4 +35,4 @@ jobs:
           DOCKER_CLIENT_TIMEOUT: "120"
           COMPOSE_HTTP_TIMEOUT: "120"
         run: |
-          docker-compose -f LNX-docker-compose.yml up --build --exit-code-from app
+          docker compose -f LNX-docker-compose.yml up --build --exit-code-from app
